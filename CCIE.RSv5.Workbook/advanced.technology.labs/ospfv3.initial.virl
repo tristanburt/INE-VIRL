@@ -19,7 +19,6 @@ cdp run
 interface Loopback0
  ipv6 address 2001:150:1:1::1/128
  ip address 150.1.1.1 255.255.255.255
- ipv6 ospf 1 area 0
 !
 interface GigabitEthernet0/1
  cdp enable
@@ -66,16 +65,12 @@ interface Tunnel0
  ipv6 nhrp holdtime 600
  ipv6 nhrp nhs 2001:155:1:1234::5
  ipv6 nhrp shortcut
- ipv6 ospf 1 area 0
- ipv6 ospf mtu-ignore
  tunnel source GigabitEthernet0/1.100
  tunnel mode gre multipoint
  tunnel key 10
  tunnel protection ipsec profile DMVPN_PROFILE
 !
- ipv6 router ospf 1
-  router-id 150.1.1.1
-!
+
 line con 0
  exec-timeout 0 0
  logging synchronous
@@ -87,6 +82,8 @@ line vty 0 4
  no login
 !
 end
+
+
 
 
 !
